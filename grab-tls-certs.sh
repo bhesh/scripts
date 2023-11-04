@@ -24,7 +24,7 @@ while getopts "H:p:s:h" opt; do
             PORT="${OPTARG}"
             ;;
         s)
-            SNI="-servername \"${OPTARG}\""
+            SNI="-servername '{OPTARG}'"
             ;;
         *)
             usage
