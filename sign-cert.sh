@@ -47,3 +47,4 @@ if [ -z "$CSR" ] ||
 fi
 
 openssl x509 -req -in "$CSR" -days "$VALIDITY" -CA "$CACERT" -CAkey "$CAKEY" -CAcreateserial
+exit $?

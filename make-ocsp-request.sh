@@ -93,6 +93,8 @@ fi
 
 if [ "$SIGNER" ]; then
     openssl ocsp -issuer "$ISSUER" -serial "$SERIAL" -signer "$SIGNER" -signkey "$SIGNKEY" $NONCE -reqout "$OUTPUT"
+    exit $?
 else
     openssl ocsp -issuer "$ISSUER" -serial "$SERIAL" $NONCE -reqout "$OUTPUT"
+    exit $?
 fi

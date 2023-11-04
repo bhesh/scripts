@@ -29,7 +29,7 @@ fi
 # Download certs
 echo "Downloading certificates"
 for site in "${WEBSITES[@]}"; do
-    chain="$(openssl s_client -servername "${site}" -connect ${site}:443 -showcerts 2>/dev/null </dev/null |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p')"
+    chain="$("${SRC_DIR}/grab-tls-certs.sh" -H $site -p 443)"
     subjects="$(while openssl x509 -subject_hash -noout; do :; done <<<"${chain}" 2>/dev/null)"
     filename=($subjects)
     count=0
@@ -41,14 +41,12 @@ done
 # Build and send ocsp requests
 echo "Sending OCSP requests"
 for pem in "${OUT_DIR}"/*.pem; do
-    issuer="$(openssl x509 -issuer_hash -noout -in "${pem}")"
-    serial="$(openssl x509 -serial -noout -in "${pem}" | sed -r 's/serial ?= ?//')"
-    url="$(openssl x509 -ocsp_uri -noout -in "${pem}")"
-    if [ -f "${OUT_DIR}/${issuer}.pem" ]; then
+    issuer="$(openssl x509 -issuer_hash -noout -in "${pem}").pem"
+    if [ -f "${OUT_DIR}/$issuer" ]; then
         # Build OCSP request
-        openssl ocsp -issuer "${OUT_DIR}/${issuer}.pem" -serial "0x${serial}" -reqout "${pem/.pem/-ocsp-req}.der"
+        "${SRC_DIR}/make-ocsp-request.sh" -o "${pem/.pem/-ocsp-req.der}" -i "${OUT_DIR}/$issuer" -c "$pem"
 
         # Send OCSP request
-        curl --silent -o "${pem/.pem/-ocsp-res}.der" --header 'Content-Type: application/ocsp-request' --data-binary @${pem/.pem/-ocsp-req}.der "$url"
+        "${SRC_DIR}/send-ocsp-request.sh" -o "${pem/.pem/-ocsp-res.der}" -c "$pem" -r "${pem/.pem/-ocsp-req.der}"
     fi
 done

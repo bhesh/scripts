@@ -69,7 +69,9 @@ fi
 
 if [ $GET -eq 0 ]; then
     curl --silent -o "$OUTPUT" --header 'Content-Type: application/ocsp-request' --data-binary @"$REQUEST" "$URL"
+    exit $?
 else
     uri="$(base64 -w0 "$REQUEST" | sed 's/+/%2B/g;s|/|%2F|g;s/=/%3D/g')"
     curl --silent -o "$OUTPUT" --header 'Content-Type: application/ocsp-request' "${URL}/$uri"
+    exit $?
 fi

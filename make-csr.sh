@@ -52,3 +52,4 @@ if [ "$DIGEST" != "md2" ] &&
 fi
 
 openssl req -new -$DIGEST -key "$KEY" -subj "$SUBJ"
+exit $?

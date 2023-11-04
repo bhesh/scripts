@@ -57,3 +57,4 @@ if [ "$DIGEST" != "md2" ] &&
 fi
 
 openssl req -new -x509 -days "$VALIDITY" -$DIGEST -key "$KEY" -subj "$SUBJ"
+exit $?

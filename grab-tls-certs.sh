@@ -40,3 +40,4 @@ if [ -z "$HOST" ] ||
 fi
 
 openssl s_client $SNI -connect $HOST:$PORT -showcerts 2>/dev/null </dev/null |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p'
+exit $?

@@ -41,6 +41,7 @@ if [ "$ALGO" == "rsa" ]; then
         exit 1
     fi
     openssl genrsa "$PARAM"
+    exit $?
 elif [ "$ALGO" == "ec" ]; then
     if [ -z "$PARAM" ]; then
         echo "ERROR: ec requires the curve as a parameter" >&2
@@ -53,8 +54,10 @@ elif [ "$ALGO" == "ec" ]; then
     fi
 elif [ "$ALGO" == "dsa" ]; then
     openssl dsaparam -genkey -noout 1024
+    exit $?
 elif [ "$ALGO" == "ed25519" ]; then
     openssl genpkey -algorithm ed25519
+    exit $?
 else
     echo "ERROR: unknown algorithm \`$ALGO\`" >&2
     exit 1
