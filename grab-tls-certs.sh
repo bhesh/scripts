@@ -6,7 +6,7 @@ usage() {
     echo "usage: $0 -H HOST -p PORT [-s SNI]" >&2
     echo "" >&2
     echo "OPTIONS" >&2
-    echo "  -h         prints this message" >&2
+    echo "  -h         print this message" >&2
     echo "  -H HOST    host or IP to connect to" >&2
     echo "  -p PORT    port to connect to" >&2
     echo "  -s SNI     server name indicator" >&2

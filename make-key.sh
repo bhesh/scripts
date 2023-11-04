@@ -8,7 +8,7 @@ usage() {
     echo "Algorithms: rsa, ec, dsa, ed25519" >&2
     echo "" >&2
     echo "OPTIONS" >&2
-    echo "  -h         prints this message" >&2
+    echo "  -h         print this message" >&2
     echo "  -a ALGO    algorithm to use" >&2
     echo "  -p PARAM   parameters for the algorithm" >&2
 }

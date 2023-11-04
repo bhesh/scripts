@@ -6,7 +6,7 @@ usage() {
     echo "usage: $0 -s SUBJ -k KEY -d DIGEST [-v DAYS]" >&2
     echo "" >&2
     echo "OPTIONS" >&2
-    echo "  -h         prints this message" >&2
+    echo "  -h         print this message" >&2
     echo "  -s SUBJ    subject to use" >&2
     echo "  -k KEY     path to the key file" >&2
     echo "  -d DIGEST  signature digest to use" >&2

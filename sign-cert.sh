@@ -6,7 +6,7 @@ usage() {
     echo "usage: $0 -r CSR -c CACERT -k CAKEY [-v DAYS]" >&2
     echo "" >&2
     echo "OPTIONS" >&2
-    echo "  -h         prints this message" >&2
+    echo "  -h         print this message" >&2
     echo "  -r CSR     certificate request to sign" >&2
     echo "  -c CACERT  ca to sign the request with" >&2
     echo "  -k CAKEY   key to sign the requet with" >&2

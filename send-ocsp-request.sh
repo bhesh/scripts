@@ -7,7 +7,7 @@ usage() {
     echo "       $0 -o OUTPUT -u URL -r REQUEST [-G]" >&2
     echo "" >&2
     echo "OPTIONS" >&2
-    echo "  -h         prints this message" >&2
+    echo "  -h         print this message" >&2
     echo "  -o OUTPUT  output file to write to" >&2
     echo "  -c CERT    grabs the OCSP URL from the certificate" >&2
     echo "  -u URL     URL to send the OCSP request" >&2

@@ -7,7 +7,7 @@ usage() {
     echo "       $0 -o OUTPUT -i ISSUER -c CERT [-n] [-r SIGNER] [-k SIGNKEY]" >&2
     echo "" >&2
     echo "OPTIONS" >&2
-    echo "  -h         prints this message" >&2
+    echo "  -h         print this message" >&2
     echo "  -o OUTPUT  output file to write to" >&2
     echo "  -i ISSUER  issuer to query" >&2
     echo "  -c CERT    certificate to grab the serial from" >&2
