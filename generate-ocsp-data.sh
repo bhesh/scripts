@@ -29,7 +29,7 @@ fi
 # Download certs
 echo "Downloading certificates"
 for site in "${WEBSITES[@]}"; do
-    chain="$("${SRC_DIR}/grab-tls-certs.sh" -H $site -p 443)"
+    chain="$("${SRC_DIR}/grab-tls-certs.sh" -H $site -p 443 -s $site)"
     subjects="$(while openssl x509 -subject_hash -noout; do :; done <<<"${chain}" 2>/dev/null)"
     filename=($subjects)
     count=0
