@@ -1,7 +1,7 @@
 scripts
 =======
 
-Helpful scripts for generating testdata
+Helpful scripts for generating X.509 test data
 
 ## License
 
