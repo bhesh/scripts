@@ -1,0 +1,41 @@
+#
+# OpenSSL configuration file.
+#
+
+[ ca ]
+default_ca                   = CA_default
+
+[ CA_default ]
+database                     = index.txt
+
+[ policy_match ]
+commonName                   = supplied
+
+[ req ]
+default_bits                 = 4096
+default_keyfile              = key.pem
+default_md                   = sha256
+string_mask                  = nombstr
+distinguished_name           = req_distinguished_name
+req_extensions               = v3_req
+
+[ req_distinguished_name ]
+commonName                   = Common Name (hostname, IP, or your name)
+commonName_max               = 64
+
+[ v3_ca ]
+basicConstraints             = CA:TRUE
+subjectKeyIdentifier         = hash
+authorityKeyIdentifier       = keyid:always,issuer:always
+
+[ v3_req ]
+basicConstraints             = CA:FALSE
+subjectKeyIdentifier         = hash
+
+[ crl_ext ]
+authorityKeyIdentifier       = keyid:always,issuer:always
+
+[ v3_ocsp ]
+basicConstraints             = CA:FALSE
+keyUsage                     = nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage             = OCSPSigning

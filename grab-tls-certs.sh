@@ -24,7 +24,7 @@ while getopts "H:p:s:h" opt; do
             PORT="${OPTARG}"
             ;;
         s)
-            SNI="-servername '{OPTARG}'"
+            SNI="-servername {OPTARG}"
             ;;
         *)
             usage
@@ -32,6 +32,7 @@ while getopts "H:p:s:h" opt; do
             ;;
     esac
 done
+shift $((OPTIND-1))
 
 if [ -z "$HOST" ] ||
    [ -z "$PORT" ]; then

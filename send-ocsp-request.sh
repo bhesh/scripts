@@ -43,6 +43,7 @@ while getopts "o:c:u:r:Gh" opt; do
             ;;
     esac
 done
+shift $((OPTIND-1))
 
 if [ -z "$OUTPUT" ] || [ -z "$REQUEST" ]; then
     usage

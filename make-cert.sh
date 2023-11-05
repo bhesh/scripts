@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 usage() {
     echo "Generates a self-signed certificate given the key file" >&2
     echo "" >&2
@@ -37,6 +39,7 @@ while getopts "s:k:d:v:h" opt; do
             ;;
     esac
 done
+shift $((OPTIND-1))
 
 if [ -z "$SUBJ" ] ||
    [ -z "$KEY" ] ||
@@ -56,5 +59,10 @@ if [ "$DIGEST" != "md2" ] &&
     exit 1
 fi
 
-openssl req -new -x509 -days "$VALIDITY" -$DIGEST -key "$KEY" -subj "$SUBJ"
+openssl req -config "${SRC_DIR}/openssl.cnf" \
+    -new -x509 \
+    -days "$VALIDITY" \
+    -$DIGEST \
+    -key "$KEY" \
+    -subj "$SUBJ"
 exit $?

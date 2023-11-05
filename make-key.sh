@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 usage() {
     echo "Generates a key" >&2
     echo "" >&2
@@ -29,6 +31,7 @@ while getopts "a:p:h" opt; do
             ;;
     esac
 done
+shift $((OPTIND-1))
 
 if [ -z "$ALGO" ]; then
     usage

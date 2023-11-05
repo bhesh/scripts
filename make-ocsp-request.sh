@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 usage() {
     echo "Generates an OCSP request" >&2
     echo "" >&2
@@ -53,6 +55,7 @@ while getopts "o:i:c:s:r:k:nh" opt; do
             ;;
     esac
 done
+shift $((OPTIND-1))
 
 if [ -z "$OUTPUT" ] ||
    [ -z "$ISSUER" ]; then
