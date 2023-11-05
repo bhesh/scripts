@@ -1,7 +1,5 @@
 #!/bin/bash
 
-SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
-
 usage() {
     echo "Generates a key" >&2
     echo "" >&2

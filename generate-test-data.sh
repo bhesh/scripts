@@ -101,17 +101,17 @@ for params in "${CERTS[@]}"; do
 
     # ocsp responses
     "${SRC_DIR}/make-ocsp-response.sh" -o "$good_ocsp_res_file" -f "$ca_index_file" -c "$ca_file" \
-        -r "$ocsp_file" -k "$ocsp_key_file" -q "$good_ocsp_req_file"
+        -r "$ocsp_file" -k "$ocsp_key_file" -q "$good_ocsp_req_file" -v 365
     "${SRC_DIR}/make-ocsp-response.sh" -o "$good_ocsp_nonce_res_file" -f "$ca_index_file" -c "$ca_file" \
-        -r "$ocsp_file" -k "$ocsp_key_file" -q "$good_ocsp_nonce_req_file"
+        -r "$ocsp_file" -k "$ocsp_key_file" -q "$good_ocsp_nonce_req_file" -v 365
     "${SRC_DIR}/make-ocsp-response.sh" -o "$revoked_ocsp_res_file" -f "$ca_index_file" -c "$ca_file" \
-        -r "$ocsp_file" -k "$ocsp_key_file" -q "$revoked_ocsp_req_file"
+        -r "$ocsp_file" -k "$ocsp_key_file" -q "$revoked_ocsp_req_file" -v 365
     "${SRC_DIR}/make-ocsp-response.sh" -o "$revoked_ocsp_nonce_res_file" -f "$ca_index_file" -c "$ca_file" \
-        -r "$ocsp_file" -k "$ocsp_key_file" -q "$revoked_ocsp_nonce_req_file"
+        -r "$ocsp_file" -k "$ocsp_key_file" -q "$revoked_ocsp_nonce_req_file" -v 365
     "${SRC_DIR}/make-ocsp-response.sh" -o "$unknown_ocsp_res_file" -f "$ca_index_file" -c "$ca_file" \
-        -r "$ocsp_file" -k "$ocsp_key_file" -q "$unknown_ocsp_req_file"
+        -r "$ocsp_file" -k "$ocsp_key_file" -q "$unknown_ocsp_req_file" -v 365
     "${SRC_DIR}/make-ocsp-response.sh" -o "$unknown_ocsp_nonce_res_file" -f "$ca_index_file" -c "$ca_file" \
-        -r "$ocsp_file" -k "$ocsp_key_file" -q "$unknown_ocsp_nonce_req_file"
+        -r "$ocsp_file" -k "$ocsp_key_file" -q "$unknown_ocsp_nonce_req_file" -v 365
 
     # convert ca and crl
     "${SRC_DIR}/encode.sh" -t key -k "${params[0]}" -d -i "$ca_key_file" -o "${ca_key_file/.pem/.der}"
