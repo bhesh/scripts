@@ -62,8 +62,10 @@ for cert in "${CERT_CHAIN[@]}"; do
     if [ -f "${OUT_DIR}/$issuer" ]; then
         # Build OCSP request
         "${SRC_DIR}/make-ocsp-request.sh" -o "${cert/.pem/-ocsp-req.der}" -i "${OUT_DIR}/$issuer" -c "$cert"
+        "${SRC_DIR}/make-ocsp-request.sh" -o "${cert/.pem/-ocsp-nonce-req.der}" -i "${OUT_DIR}/$issuer" -c "$cert" -n
 
         # Send OCSP request
         "${SRC_DIR}/send-ocsp-request.sh" -o "${cert/.pem/-ocsp-res.der}" -c "$cert" -r "${cert/.pem/-ocsp-req.der}"
+        "${SRC_DIR}/send-ocsp-request.sh" -o "${cert/.pem/-ocsp-nonce-res.der}" -c "$cert" -r "${cert/.pem/-ocsp-nonce-req.der}"
     fi
 done
