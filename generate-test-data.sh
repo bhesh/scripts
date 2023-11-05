@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
-OUT_DIR="${SRC_DIR}/out"
+OUT_DIR="out"
 CERTS=(
     "rsa 1024 md5"
     "rsa 2048 sha1"
