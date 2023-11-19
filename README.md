@@ -27,7 +27,7 @@ $ ./generate-real-ocsp.sh -H <hostname> -p <port> [-s <SNI>]
 Runs `generate-real-ocsp.sh` for several of the most visited sites
 
 ```bash
-$ ./generate-read-data.sh
+$ ./generate-real-data.sh
 ```
 
 ### Other
